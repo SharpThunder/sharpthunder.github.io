@@ -436,7 +436,7 @@ code, pre, .mono { font-family: var(--mono); }
 .cluster-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem 1rem; font: .78rem var(--mono); color: var(--muted); margin-bottom: .9rem; }
 .cluster-head .legend { display: inline-flex; align-items: center; gap: .35rem; flex-wrap: wrap; }
 .cluster-head .legend .pod { margin-left: .4rem; }
-.nodes { display: grid; grid-template-columns: repeat(auto-fill, minmax(10.5rem, 1fr)); gap: .75rem; min-height: 7.2rem; }
+.nodes { display: grid; grid-template-columns: repeat(auto-fit, minmax(10.5rem, 1fr)); gap: .75rem; min-height: 7.2rem; }
 .knode {
   border: 1px solid color-mix(in srgb, var(--k8s) 45%, var(--rule)); border-radius: 10px; padding: .65rem .7rem .75rem;
   background: color-mix(in srgb, var(--k8s) 6%, var(--bg)); transition: opacity .5s, transform .5s, border-color .3s, background .3s;
