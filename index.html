@@ -28,16 +28,19 @@ Terraform will perform the following actions:
 
   <span class="c-add"># module.sinan.devops_engineer.this</span> will be created
   <span class="c-add">+</span> resource "devops_engineer" "sinan" {
-      <span class="c-add">+</span> location           = "Warsaw, PL"
-      <span class="c-add">+</span> experience_years   = 6
-      <span class="c-add">+</span> clouds             = [<span class="v-aws">"aws"</span>, <span class="v-aws">"aws-cn"</span>, <span class="v-gcp">"gcp"</span>, <span class="v-azure">"azure"</span>]
-      <span class="c-add">+</span> orchestration      = <span class="v-k8s">"kubernetes"</span>  <span class="c-mod"># CKA</span>
-      <span class="c-add">+</span> ci_cd              = [<span class="v-azure">"azure-devops"</span>, <span class="v-github">"github-actions"</span>, <span class="v-gitlab">"gitlab-ci"</span>]
-      <span class="c-add">+</span> deploy_downtime    = "&lt;1s"
-      <span class="c-add">+</span> iac                = <span class="v-tf">"terraform"</span>
-      <span class="c-add">+</span> needs_sponsorship  = <span class="c-false">false</span>
-      <span class="c-add">+</span> on_call_mood       = "calm"
-      <span class="c-add">+</span> hobbies            = (known after apply)
+      <span class="c-add">+</span> location      = "Warsaw, PL"
+      <span class="c-add">+</span> experience    = "6+ years"
+      <span class="c-add">+</span> clouds        = [<span class="v-aws">"aws"</span>, <span class="v-aws">"aws-cn"</span>, <span class="v-gcp">"gcp"</span>, <span class="v-azure">"azure"</span>]
+      <span class="c-add">+</span> orchestration = <span class="v-k8s">"kubernetes"</span> <span class="c-mod"># CKA</span>
+      <span class="c-add">+</span> ci_cd         = [
+          <span class="v-azure">"azure-devops"</span>,
+          <span class="v-github">"github-actions"</span>,
+          <span class="v-gitlab">"gitlab-ci"</span>,
+        ]
+      <span class="c-add">+</span> downtime      = "&lt;1s"
+      <span class="c-add">+</span> iac           = <span class="v-tf">"terraform"</span>
+      <span class="c-add">+</span> sponsorship   = <span class="c-false">false</span>
+      <span class="c-add">+</span> hobbies       = (known after apply)
     }
 
 <span class="c-strong">Plan:</span> 1 to add, <span class="c-strong">0 to change, 0 to destroy.</span></code></pre>
@@ -121,6 +124,15 @@ Terraform will perform the following actions:
 <span class="v-k8s">ci</span>               <span class="v-gitlab">gitlab-runner</span> / <span class="v-github">actions-runner</span>  3/3     <span class="c-add">CI inside the cluster</span></code></pre>
   </div>
 
+  <figure class="cluster t-k8s" aria-label="Animation: a spot node gets an interruption notice, its pods are rescheduled onto other nodes, and the cluster autoscaler adds a new spot node.">
+    <div class="cluster-head">
+      <span><span class="chip t-aws">eks</span> spot node group · live replay</span>
+      <span class="legend"><i class="pod app-api"></i>api <i class="pod app-web"></i>web <i class="pod app-worker"></i>worker <i class="pod app-solver"></i>solver</span>
+    </div>
+    <div class="nodes" data-cluster></div>
+    <figcaption class="cluster-log" data-cluster-log>$ kubectl get events -w</figcaption>
+  </figure>
+
   <div class="cards">
     <article class="cloud t-k8s" style="--c2: var(--aws)">
       <h3>Spot-first, without the pain</h3>
@@ -190,7 +202,7 @@ Terraform will perform the following actions:
       <path class="link" stroke="url(#aws-gcp)" d="M8.7 39.9 Q34 44 50.1 63.6"/>
       <path class="link home" d="M21 37.8 Q15 36 8.7 39.9"/>
 
-      <g class="node home"><circle cx="21" cy="37.8" r="1.1"/><text x="22.6" y="36.4">Warsaw · home</text></g>
+      <g class="node home"><circle cx="21" cy="37.8" r="1.1"/><text x="22.4" y="40.6">Warsaw · home</text></g>
       <g class="node aws"><circle cx="8.7" cy="39.9" r="1.3"/><text x="1" y="43.8">AWS Frankfurt</text></g>
       <g class="node aws"><circle cx="105.2" cy="52.5" r="1.3"/><text x="92" y="56.8">AWS China · Ningxia</text></g>
       <g class="node gcp">
@@ -268,9 +280,9 @@ Terraform will perform the following actions:
   <div class="stats">
     <div class="t-tf"><b>0</b><span>resources destroyed while importing a live AWS estate into Terraform</span></div>
     <div class="t-azure"><b>&lt;1s</b><span>deploy downtime, down from manual release windows</span></div>
-    <div class="t-k8s"><b>300</b><span>cores for a battery-optimization solver on Kubernetes</span></div>
-    <div class="t-aws" style="--c2: var(--azure)"><b class="grad">10 TB</b><span>Postgres moved from AWS to Azure with minimal downtime</span></div>
-    <div class="t-aws"><b>345→61</b><span>audit rules on the fleet, without losing coverage</span></div>
+    <div class="t-k8s"><b><span data-count="300">300</span></b><span>cores for a battery-optimization solver on Kubernetes</span></div>
+    <div class="t-aws" style="--c2: var(--azure)"><b class="grad"><span data-count="10">10</span> TB</b><span>Postgres moved from AWS to Azure with minimal downtime</span></div>
+    <div class="t-aws"><b>345→<span data-count="61" data-from="345">61</span></b><span>audit rules on the fleet, without losing coverage</span></div>
     <div class="t-gcp"><b class="gcp-grad">3</b><span>clouds in production: AWS, AWS China, GCP</span></div>
   </div>
 </section>
