@@ -484,3 +484,12 @@ code, pre, .mono { font-family: var(--mono); }
 .shell-form { display: flex; align-items: center; gap: .5rem; padding: .6rem 1rem .9rem; border-top: 1px solid #ffffff12; }
 .shell-form input { flex: 1; min-width: 0; background: none; border: 0; outline: none; color: #fff; font: .85rem var(--mono); caret-color: #f5c518; }
 .shell-form input::placeholder { color: var(--term-muted); }
+
+/* CI history: vertical timeline on phones (dots sat on top of the previous item's text) */
+@media (max-width: 40rem) {
+  .history { grid-template-columns: 1fr; border-top: 0; border-image: none; border-left: 3px solid transparent;
+    border-image: linear-gradient(180deg, var(--bamboo), var(--gitlab), var(--github), var(--azure)) 1; margin-left: .4rem; }
+  .history li { padding: 0 0 1.4rem 1.4rem; }
+  .history li:last-child { padding-bottom: 0; }
+  .history li::before { top: .15rem; left: -8.5px; }
+}
