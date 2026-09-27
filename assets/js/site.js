@@ -226,7 +226,7 @@
         'gozen-holding     Completed    2y5m';
     },
     'terraform plan': function () {
-      return '<span class="c-add">+</span> kubernetes platform work\n<span class="c-add">+</span> zero-downtime pipelines\n<span class="c-add">+</span> terraform that imports without destroying\n<span class="c-add">+</span> calm on-call\n\n<b>Plan:</b> 4 to add, 0 to change, 0 to destroy.';
+      return '<span class="c-add">+</span> kubernetes platform work\n<span class="c-add">+</span> zero-downtime pipelines\n<span class="c-add">+</span> terraform module libraries\n<span class="c-add">+</span> calm on-call\n\n<b>Plan:</b> 4 to add, 0 to change, 0 to destroy.';
     },
     'cat certs.txt': function () { return '<span class="v-k8s">CKA</span>: Certified Kubernetes Administrator (93/100)\n<span class="v-aws">AWS</span> Certified Solutions Architect – Associate\n<span class="v-tf">HashiCorp</span> Terraform Associate'; },
     'ls blog/': function () { return 'drafts in progress. <a href="' + S.blog + '">open ~/blog</a>'; },

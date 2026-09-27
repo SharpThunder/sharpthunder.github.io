@@ -231,8 +231,8 @@ Terraform will perform the following actions:
       <p class="chips"><span class="chip t-tf">terraform modules</span><span class="chip t-aws">aws</span><span class="chip t-aws">aws-cn</span></p>
     </article>
     <article class="cloud t-tf">
-      <h3>Import without fear</h3>
-      <p>Brought a live production estate under Terraform, 70 tasks, and not a single resource destroyed along the way.</p>
+      <h3>ClickOps → code</h3>
+      <p>Brought the live production and staging EU estates under Terraform: VPC, firewall, RDS, ALB, backups, VPN and IAM, previously built by hand.</p>
       <p class="chips"><span class="chip t-tf">terraform import</span><span class="chip t-aws">eu-central-1</span></p>
     </article>
     <article class="cloud t-aws" style="--c2: var(--azure)">
@@ -284,7 +284,7 @@ Terraform will perform the following actions:
     <h2>A few numbers I'm proud of.</h2>
   </header>
   <div class="stats">
-    <div class="t-tf"><b>0</b><span>resources destroyed while importing a live AWS estate into Terraform</span></div>
+    <div class="t-tf"><b><span data-count="25">25</span>+</b><span>Terraform modules, working in both AWS partitions</span></div>
     <div class="t-azure"><b>&lt;1s</b><span>deploy downtime, down from manual release windows</span></div>
     <div class="t-k8s"><b><span data-count="300">300</span></b><span>cores for a battery-optimization solver on Kubernetes</span></div>
     <div class="t-aws" style="--c2: var(--azure)"><b class="grad"><span data-count="10">10</span> TB</b><span>Postgres moved from AWS to Azure with minimal downtime</span></div>
