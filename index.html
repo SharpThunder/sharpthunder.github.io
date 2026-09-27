@@ -13,7 +13,7 @@ title: Sinan B. Öztürk. DevOps engineer
       Before that I was the only infra engineer at a startup running everything on EKS and AKS.
     </p>
     <p class="badges">
-      <span>CKA</span><span>AWS Solutions Architect</span><span>Terraform Associate</span>
+      <span>CKA · 93/100</span><span>AWS Solutions Architect</span><span>Terraform Associate</span>
       <span class="ok">work-authorized in Poland, no sponsorship needed</span>
     </p>
   </div>
@@ -88,8 +88,8 @@ Terraform will perform the following actions:
 
   <ol class="history" aria-label="CI systems over the years">
     <li><b>2018</b><span>Bamboo + Jenkins</span><small>.NET, Java, PHP, Python, Ruby, iOS via Fastlane</small></li>
-    <li><b>2021</b><span>GitLab CI</span><small>runners inside Kubernetes, Kustomize, Trivy scans</small></li>
-    <li><b>2022</b><span>GitHub Actions</span><small>runners inside Kubernetes, EKS + AKS + Lambda targets</small></li>
+    <li><b>2021</b><span>GitLab CI</span><small>GitLab + runners in Kubernetes, Kustomize for dev/stage/prod, Trivy scans</small></li>
+    <li><b>2022</b><span>GitHub Actions</span><small>runner controller in Kubernetes that scales only when a pipeline runs</small></li>
     <li><b>2025</b><span>Azure DevOps</span><small>OIDC to AWS, gated prod, &lt;1s deploys</small></li>
   </ol>
 </section>
@@ -136,9 +136,11 @@ ci               gitlab-runner / actions-runner  3/3     <span class="c-add">CI 
       <p class="tech">knative · locust · lambda</p>
     </article>
     <article>
-      <h3>Fixed upstream</h3>
-      <p>Hit a bug in eksctl while building clusters and sent the fix upstream instead of working around it.</p>
-      <p class="tech">eksctl · open source</p>
+      <h3>Fixed upstream, merged</h3>
+      <p>When the tool is open source, the bug is fixable at the source:
+        <a href="https://github.com/eksctl-io/eksctl/pull/4047">eksctl #4047</a> (missing IAM permission) and
+        <a href="https://github.com/rancher/fleet/pull/1185">rancher/fleet #1185</a> (controller broke with GitOps disabled), both merged.</p>
+      <p class="tech">eksctl · rancher · open source</p>
     </article>
   </div>
 
@@ -171,7 +173,7 @@ ci               gitlab-runner / actions-runner  3/3     <span class="c-add">CI 
   <figure class="map">
     <svg viewBox="0 28 120 42" role="img" aria-labelledby="map-title map-desc">
       <title id="map-title">Regions I operate</title>
-      <desc id="map-desc">Warsaw home base, AWS Frankfurt, AWS China Ningxia, and GCP Dammam, connected by VPN links. A dotted line shows the move from Istanbul to Warsaw.</desc>
+      <desc id="map-desc">Warsaw home base, AWS Frankfurt, AWS China Ningxia, and GCP Dammam, connected by VPN links.</desc>
       <defs>
         <pattern id="dots" width="2" height="2" patternUnits="userSpaceOnUse">
           <circle cx="1" cy="1" r=".18" class="grid-dot"/>
@@ -182,17 +184,14 @@ ci               gitlab-runner / actions-runner  3/3     <span class="c-add">CI 
       <path class="link" d="M8.7 39.9 Q57 22 105.2 52.5"/>
       <path class="link" d="M8.7 39.9 Q34 44 50.1 63.6"/>
       <path class="link home" d="M21 37.8 Q15 36 8.7 39.9"/>
-      <path class="journey" d="M29 49 Q27 42 21 37.8"/>
 
       <g class="node home"><circle cx="21" cy="37.8" r="1.1"/><text x="22.6" y="36.4">Warsaw · home</text></g>
       <g class="node"><circle cx="8.7" cy="39.9" r="1.1"/><text x="1" y="43.6">AWS Frankfurt</text></g>
       <g class="node"><circle cx="105.2" cy="52.5" r="1.1"/><text x="92" y="56.6">AWS China · Ningxia</text></g>
       <g class="node"><circle cx="50.1" cy="63.6" r="1.1"/><text x="52" y="64.6">GCP · Dammam</text></g>
-      <g class="node origin"><circle cx="29" cy="49" r=".8"/><text x="30.4" y="50.4">Istanbul · where it started</text></g>
     </svg>
     <figcaption>
       <span><i class="lg link-lg"></i> site-to-site VPN</span>
-      <span><i class="lg journey-lg"></i> my own migration, 2023</span>
     </figcaption>
   </figure>
 
@@ -220,20 +219,20 @@ ci               gitlab-runner / actions-runner  3/3     <span class="c-add">CI 
 
   <ol class="apply-log">
     <li>
-      <p class="log-line"><span class="c-add">data.origin</span>: Read complete <span class="muted">[age 8 · Istanbul]</span></p>
-      <p>Computer magazines, then Linux. Linux Summer Camp in 2014 was where "sysadmin" stopped being a word and became the plan.</p>
+      <p class="log-line"><span class="c-add">data.origin</span>: Read complete <span class="muted">[age 8 → 2018]</span></p>
+      <p>Broke Windows 98 at 8 and fixed it by reinstalling. PC magazines, forum software, a private MMO server hosted at home. At university, two Linux summer camps (14 days, 8 hours a day). Then an x86 Steam client running on an ARM Banana Pi, which is what got me my first internship.</p>
     </li>
     <li>
       <p class="log-line"><span class="c-add">module.gozen_holding</span>: Creation complete after 2y4m <span class="muted">[2018–2020 · Istanbul · aviation]</span></p>
-      <p>Intern → part-time → DevOps engineer at the group behind Freebird Airlines. Racked Supermicro JBODs for a 72-disk GlusterFS cluster, migrated VMware to OpenNebula, shipped iOS builds to TestFlight with Fastlane, ran Zabbix across 300+ servers, and started the move from VMs to Kubernetes on Rancher.</p>
+      <p>Intern → part-time → DevOps engineer at the group behind Freebird Airlines. Bamboo CI/CD for .NET, Java, PHP, Python, Ruby and iOS (TestFlight), VMware → OpenNebula, a GlusterFS cluster on 40 Gbit networking racked by hand, Zabbix across 300+ servers, and the first Kubernetes steps with Rancher, RKE and ArgoCD.</p>
     </li>
     <li>
       <p class="log-line"><span class="c-add">module.powerdev</span>: Creation complete after 2y6m <span class="muted">[2021–2023 · remote · renewables]</span></p>
-      <p>The only infrastructure engineer. Built EKS from scratch on startup credits, ran it on spot instances, and scaled a battery-optimization solver to 300 cores. Ran AWS Lambda code unmodified on Knative by reimplementing the Lambda Runtime API. When the credits ran out, moved everything, including a 10 TB Postgres, from AWS to Azure. Sent a fix upstream to eksctl along the way.</p>
+      <p>The only DevOps engineer. Built EKS from scratch on startup credits with eksctl, then Terraform: spot node groups, GitLab and GitHub Actions runners inside the cluster, Prometheus, Loki, Velero. When the credits ran out, moved the fleet to AKS and a 10 TB Postgres to Azure with sync and a DNS switch; the 300-core solver stayed on Lambda, where the benchmarks said it belonged.</p>
     </li>
     <li>
-      <p class="log-line"><span class="c-mod">module.relocation</span>: Modifications complete after 1y4m <span class="muted">[2023–2025 · Istanbul → Warsaw]</span></p>
-      <p>New country, new home. Earned CKA and Terraform Associate, kept my hands dirty in labs.</p>
+      <p class="log-line"><span class="c-mod">module.career_break</span>: Modifications complete after 1y4m <span class="muted">[2023–2025]</span></p>
+      <p>A break, and a reset. Passed the CKA (93/100) and Terraform Associate, kept building in labs.</p>
     </li>
     <li class="current">
       <p class="log-line"><span class="c-add">module.ulula</span>: Still creating... <span class="muted">[2025–now · Warsaw · EcoVadis]</span><span class="cursor" aria-hidden="true"></span></p>
@@ -264,21 +263,39 @@ ci               gitlab-runner / actions-runner  3/3     <span class="c-add">CI 
   </header>
   <div class="cards">
     <article class="story">
-      <p class="sev">SEV-1</p>
-      <h3>The security scanner that took production down</h3>
-      <p>A vulnerability scan saturated PHP-FPM. How we found it, split the pools, and made sure the next scan was a non-event.</p>
+      <p class="sev">SEV-2 · K8S</p>
+      <h3>502s on every deploy: the readiness probe lied</h3>
+      <p>Pods were marked ready before the app could serve traffic. Pointing the probe at a real health endpoint made rollouts clean.</p>
+      <span class="soon">coming soon</span>
+    </article>
+    <article class="story">
+      <p class="sev">SEV-1 · K8S</p>
+      <h3>Rancher deleted our EKS node groups</h3>
+      <p>Importing an existing EKS cluster into Rancher removed its node groups. <a href="https://github.com/rancher/rancher/issues/36465">Filed upstream</a>, and it's one reason we dropped Rancher.</p>
+      <span class="soon">coming soon</span>
+    </article>
+    <article class="story">
+      <p class="sev">DECISION</p>
+      <h3>Knative vs Lambda: the workload picks the runtime</h3>
+      <p>Load-tested a CPU-bound optimization solver to 300 cores on AKS + Knative. The scaling shape was wrong, so it went to Lambda.</p>
       <span class="soon">coming soon</span>
     </article>
     <article class="story">
       <p class="sev">MIGRATION</p>
-      <h3>The credits ran out: AWS → Azure with 10 TB on board</h3>
-      <p>What moving a startup's whole platform between clouds looks like when you're the only infra person.</p>
+      <h3>The credits ran out: EKS → AKS with 10 TB on board</h3>
+      <p>Moving a startup's whole platform between clouds as the only infra person: site-to-site VPN, database sync, one DNS switch.</p>
       <span class="soon">coming soon</span>
     </article>
     <article class="story">
-      <p class="sev">IaC</p>
-      <h3>Importing a live AWS estate with zero destroys</h3>
-      <p>Import order, plan discipline, and the bucket that was in the wrong region all along.</p>
+      <p class="sev">UPGRADE</p>
+      <h3>PHP 5.6 → 8.3 over one weekend</h3>
+      <p>An end-of-life stack, rebuilt dependencies, deprecated mysqli calls, MariaDB grant changes, rolled out per environment.</p>
+      <span class="soon">coming soon</span>
+    </article>
+    <article class="story">
+      <p class="sev">SEV-1</p>
+      <h3>The security scanner that took production down</h3>
+      <p>A vulnerability scan saturated PHP-FPM. How we found it, split the pools, and made the next scan a non-event.</p>
       <span class="soon">coming soon</span>
     </article>
   </div>
@@ -293,7 +310,8 @@ ci               gitlab-runner / actions-runner  3/3     <span class="c-add">CI 
   <ul class="offcall">
     <li><span class="ico" aria-hidden="true">🎮</span><b>240+ games finished</b><span class="txt">Logged, one by one, since 2015. Deus Ex and Dishonored set the bar.</span></li>
     <li><span class="ico" aria-hidden="true">🚲</span><b>Bicycles</b><span class="txt">The only kind of redundancy I don't have to monitor.</span></li>
-    <li><span class="ico" aria-hidden="true">🧭</span><b>Travel</b><span class="txt">Istanbul → Warsaw was my biggest migration so far. No rollback plan.</span></li>
+    <li><span class="ico" aria-hidden="true">🧭</span><b>Travel</b><span class="txt">New cities, new food, zero change requests.</span></li>
+    <li><span class="ico" aria-hidden="true">🏆</span><b>AWS GameDay 2026</b><span class="txt">4th place in Warsaw with team CloudBusters. Regular at AWS User Group Warsaw.</span></li>
     <li><span class="ico" aria-hidden="true">🖥️</span><b>Homelab</b><span class="txt">Where things are allowed to break.</span></li>
     <li><span class="ico" aria-hidden="true">📚</span><b>Books</b><span class="txt">Oğuz Atay's <em>Tutunamayanlar</em>, the Turkish novel I keep coming back to.</span></li>
   </ul>
