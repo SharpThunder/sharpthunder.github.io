@@ -226,3 +226,41 @@ code, pre, .mono { font-family: var(--mono); }
 .status-bar .links { margin-left: auto; display: flex; gap: 1rem; }
 .status-bar a { color: var(--muted); }
 .status-bar a:hover { color: var(--fg); }
+
+/* ---------- ci/cd pipeline ---------- */
+.block-head .lede { margin: 1rem 0 0; }
+.pipeline { background: var(--card); border: 1px solid var(--rule); border-radius: 14px; padding: 1.1rem 1.2rem 1.3rem; margin-bottom: 1.25rem; }
+.run-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: .5rem; font: .8rem var(--mono); color: var(--muted); margin-bottom: 1rem; }
+.run-ok { color: var(--add); font-weight: 700; }
+.stages { list-style: none; padding: 0; margin: 0; display: grid; grid-template-columns: repeat(5, 1fr); gap: .75rem; }
+.stages li { position: relative; margin: 0; padding: .85rem .8rem; border: 1px solid var(--rule); border-radius: 10px; background: var(--bg); min-width: 0; }
+.stages li:not(:last-child)::after { content: ""; position: absolute; top: 50%; right: -.8rem; width: .8rem; height: 2px; background: var(--add); }
+.stages li:last-child { border-color: var(--add); box-shadow: 0 0 0 3px color-mix(in srgb, var(--add) 18%, transparent); }
+.stages b { display: block; font: 700 .95rem var(--mono); margin: .35rem 0 .15rem; }
+.stages span:not(.st) { display: block; font-size: .82rem; color: var(--muted); line-height: 1.35; }
+.st { display: inline-grid; place-items: center; width: 1.4rem; height: 1.4rem; border-radius: 50%; font-size: .75rem; font-weight: 700; color: #fff; }
+.st.ok { background: var(--add); }
+.st.gate { background: var(--mod); }
+@media (max-width: 48rem) {
+  .stages { grid-template-columns: 1fr; gap: .6rem; }
+  .stages li:not(:last-child)::after { top: auto; bottom: -.6rem; right: auto; left: 1.4rem; width: 2px; height: .6rem; }
+}
+.stages li { animation: stage-in .4s ease both; }
+.stages li:nth-child(2) { animation-delay: .1s; } .stages li:nth-child(3) { animation-delay: .2s; }
+.stages li:nth-child(4) { animation-delay: .3s; } .stages li:nth-child(5) { animation-delay: .4s; }
+@keyframes stage-in { from { opacity: 0; transform: translateY(6px); } }
+@media (prefers-reduced-motion: reduce) { .stages li { animation: none; } }
+
+.history { list-style: none; padding: 0; margin: 2rem 0 0; display: grid; grid-template-columns: repeat(auto-fit, minmax(13rem, 1fr)); gap: 0; border-top: 2px solid var(--rule); }
+.history li { position: relative; margin: 0; padding: 1rem 1rem 0 0; }
+.history li::before { content: ""; position: absolute; top: -7px; left: 0; width: 12px; height: 12px; border-radius: 50%; background: var(--bg); border: 2px solid var(--muted); }
+.history li:last-child::before { background: var(--accent); border-color: var(--accent); }
+.history b { display: block; font: 700 .8rem var(--mono); color: var(--muted); }
+.history span { display: block; font-weight: 700; margin: .1rem 0 .2rem; }
+.history small { display: block; color: var(--muted); font-size: .85rem; line-height: 1.4; }
+
+/* ---------- k8s ---------- */
+.terminal.wide { margin-bottom: 1.25rem; }
+.terminal.wide .term-body { font-size: clamp(.66rem, 1.4vw, .8rem); }
+.sub { margin: 2.5rem 0 1rem; font-size: 1.15rem; }
+.sub code { font-size: .95em; background: var(--bg-2); padding: .1em .35em; border-radius: 4px; }

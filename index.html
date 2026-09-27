@@ -5,16 +5,15 @@ title: Sinan B. Öztürk. DevOps engineer
 
 <section class="hero">
   <div class="hero-copy">
-    <p class="eyebrow">DevOps engineer · Warsaw</p>
-    <h1>I make infrastructure<br><span class="hl">boring</span> in the best way.</h1>
+    <p class="eyebrow">DevOps engineer · Kubernetes · CI/CD · Warsaw</p>
+    <h1>I make shipping<br><span class="hl">boring</span> in the best way.</h1>
     <p class="lede">
-      I'm Sinan. I run the DevOps function at Ulula, an EcoVadis company: one estate across
-      <strong>AWS Europe</strong>, <strong>AWS China</strong> and <strong>GCP in Saudi Arabia</strong>,
-      all in Terraform. Before that I built Kubernetes platforms from scratch and racked
-      servers for an airline.
+      I'm Sinan. I build <strong>Kubernetes platforms</strong> and <strong>pipelines that deploy without downtime</strong>.
+      Today I run DevOps at Ulula, an EcoVadis company, across AWS Europe, AWS China and GCP in Saudi Arabia.
+      Before that I was the only infra engineer at a startup running everything on EKS and AKS.
     </p>
     <p class="badges">
-      <span>AWS Solutions Architect</span><span>CKA</span><span>Terraform Associate</span>
+      <span>CKA</span><span>AWS Solutions Architect</span><span>Terraform Associate</span>
       <span class="ok">work-authorized in Poland, no sponsorship needed</span>
     </p>
   </div>
@@ -30,8 +29,10 @@ Terraform will perform the following actions:
       <span class="c-add">+</span> location           = "Warsaw, PL"
       <span class="c-add">+</span> experience_years   = 6
       <span class="c-add">+</span> clouds             = ["aws", "aws-cn", "gcp", "azure"]
+      <span class="c-add">+</span> orchestration      = "kubernetes"  <span class="c-mod"># CKA</span>
+      <span class="c-add">+</span> ci_cd              = ["azure-devops", "github-actions", "gitlab-ci"]
+      <span class="c-add">+</span> deploy_downtime    = "&lt;1s"
       <span class="c-add">+</span> iac                = "terraform"
-      <span class="c-add">+</span> orchestration      = "kubernetes"
       <span class="c-add">+</span> needs_sponsorship  = <span class="c-false">false</span>
       <span class="c-add">+</span> on_call_mood       = "calm"
       <span class="c-add">+</span> hobbies            = (known after apply)
@@ -41,9 +42,129 @@ Terraform will perform the following actions:
   </div>
 </section>
 
+<section class="block" id="cicd">
+  <header class="block-head">
+    <p class="kicker">01 · ci/cd</p>
+    <h2>From "release night" to deploys nobody notices.</h2>
+    <p class="lede">At Ulula, releases used to mean manual steps and downtime. Now a tag goes in, approvals happen, and production switches over in under a second.</p>
+  </header>
+
+  <div class="pipeline" role="img" aria-label="Pipeline run: commit, build, test, approve, deploy to production with under one second of downtime">
+    <div class="run-head">
+      <span class="run-id">#2026.09 · release/*</span>
+      <span class="run-ok">✓ succeeded</span>
+    </div>
+    <ol class="stages">
+      <li><span class="st ok">✓</span><b>commit</b><span>branch policy · PR build</span></li>
+      <li><span class="st ok">✓</span><b>build</b><span>composer · vite · self-hosted agents</span></li>
+      <li><span class="st ok">✓</span><b>test</b><span>phpunit · lint</span></li>
+      <li><span class="st gate">⏸</span><b>approve</b><span>manager gate for prod</span></li>
+      <li><span class="st ok">✓</span><b>deploy</b><span>OIDC → AWS · &lt;1s switch-over</span></li>
+    </ol>
+  </div>
+
+  <div class="cards">
+    <article>
+      <h3>Zero-downtime, measured</h3>
+      <p>The first version still dropped ~5 seconds per deploy. I kept tightening the switch-over until it went under one.</p>
+      <p class="tech">azure devops · php/laravel · vue</p>
+    </article>
+    <article>
+      <h3>No keys in the pipeline</h3>
+      <p>A self-hosted, containerized agent pool that assumes AWS roles through OIDC. Nothing long-lived to leak or rotate.</p>
+      <p class="tech">oidc · self-hosted agents · docker</p>
+    </article>
+    <article>
+      <h3>One pipeline, four regions</h3>
+      <p>The same release flow ships to Europe, AWS China, Saudi Arabia (GCP) and Myanmar. Non-prod and prod run on separate agent pools.</p>
+      <p class="tech">release/* · hotfix/* · v* tags</p>
+    </article>
+    <article>
+      <h3>Infra goes through CI too</h3>
+      <p>Terraform plan and apply run per environment from the pipeline, with variables injected per env, not from someone's laptop.</p>
+      <p class="tech">terraform · variable groups · approvals</p>
+    </article>
+  </div>
+
+  <ol class="history" aria-label="CI systems over the years">
+    <li><b>2018</b><span>Bamboo + Jenkins</span><small>.NET, Java, PHP, Python, Ruby, iOS via Fastlane</small></li>
+    <li><b>2021</b><span>GitLab CI</span><small>runners inside Kubernetes, Kustomize, Trivy scans</small></li>
+    <li><b>2022</b><span>GitHub Actions</span><small>runners inside Kubernetes, EKS + AKS + Lambda targets</small></li>
+    <li><b>2025</b><span>Azure DevOps</span><small>OIDC to AWS, gated prod, &lt;1s deploys</small></li>
+  </ol>
+</section>
+
+<section class="block" id="k8s">
+  <header class="block-head">
+    <p class="kicker">02 · kubernetes</p>
+    <h2>Clusters I've built, broken and fixed.</h2>
+    <p class="lede">As the only infra engineer at an energy startup, I built the platform on EKS and AKS from zero: provisioning, add-ons, CI runners, observability, backups, cost. Then I passed the CKA.</p>
+  </header>
+
+  <div class="terminal wide" aria-label="kubectl output listing Kubernetes components I have run">
+    <div class="term-bar"><i></i><i></i><i></i><span>~/platform: kubectl</span></div>
+<pre class="term-body"><code><span class="c-prompt">$</span> kubectl get deploy -A --context powerdev-eks
+<span class="c-strong">NAMESPACE        NAME                            READY   WHY</span>
+kube-system      cluster-autoscaler              1/1     <span class="c-add">spot nodegroups, scale to zero</span>
+kube-system      aws-load-balancer-controller    2/2     <span class="c-add">ALB/NLB from Ingress</span>
+kube-system      external-dns                    1/1     <span class="c-add">DNS from manifests (Cloudflare)</span>
+kube-system      metrics-server                  1/1     <span class="c-add">HPA</span>
+cert-manager     cert-manager                    1/1     <span class="c-add">TLS without tickets</span>
+ingress-nginx    ingress-nginx-internal          2/2     <span class="c-add">internal apps behind VPN</span>
+monitoring       prometheus / alertmanager       1/1     <span class="c-add">metrics + alerts</span>
+monitoring       grafana                         1/1     <span class="c-add">dashboards</span>
+logging          loki / seq                      1/1     <span class="c-add">replaced EFK</span>
+knative-serving  activator                       1/1     <span class="c-add">Lambda-style workloads</span>
+velero           velero                          1/1     <span class="c-add">cluster backups</span>
+ci               gitlab-runner / actions-runner  3/3     <span class="c-add">CI inside the cluster</span></code></pre>
+  </div>
+
+  <div class="cards">
+    <article>
+      <h3>Spot-first, without the pain</h3>
+      <p>Moved workloads to spot instances. Cluster Autoscaler node groups plus graceful pod termination and replicas meant interruptions became background noise.</p>
+      <p class="tech">eks · aks · cluster-autoscaler</p>
+    </article>
+    <article>
+      <h3>Hub-and-spoke → one cluster</h3>
+      <p>Started with Rancher managing several clusters, then consolidated dev and staging into one. Fewer moving parts, same isolation through namespaces.</p>
+      <p class="tech">rancher · eksctl → terraform</p>
+    </article>
+    <article>
+      <h3>300 cores for a solver</h3>
+      <p>Load-tested a CPU-bound battery-optimization solver with Locust on AKS + Knative, then moved it where cost/performance was best.</p>
+      <p class="tech">knative · locust · lambda</p>
+    </article>
+    <article>
+      <h3>Fixed upstream</h3>
+      <p>Hit a bug in eksctl while building clusters and sent the fix upstream instead of working around it.</p>
+      <p class="tech">eksctl · open source</p>
+    </article>
+  </div>
+
+  <h3 class="sub">Now: <code>kubectl get labs</code></h3>
+  <div class="cards three">
+    <article>
+      <h3>A PHP monolith, on Kubernetes</h3>
+      <p>Proof of concept: containerized a production Laravel API and frontend and packaged them as one Helm chart, with a migration Job, TLS ingress and a MariaDB volume, running on k3s.</p>
+      <p class="tech">helm · nginx · php-fpm ×2 · k3s</p>
+    </article>
+    <article>
+      <h3>GitOps from zero</h3>
+      <p>A cluster bootstrapped entirely with Terraform: ingress, MetalLB, ArgoCD syncing apps from git, and Istio on top.</p>
+      <p class="tech">terraform · k3d · argocd · istio</p>
+    </article>
+    <article>
+      <h3>.NET API, shipped properly</h3>
+      <p>A .NET API with its own Dockerfile, an Nginx front container and a Helm chart, going from <code>git push</code> to a running pod.</p>
+      <p class="tech">docker · helm · .net</p>
+    </article>
+  </div>
+</section>
+
 <section class="block" id="estate">
   <header class="block-head">
-    <p class="kicker">01 · the estate</p>
+    <p class="kicker">03 · the estate</p>
     <h2>Three clouds, two AWS partitions, one Terraform codebase.</h2>
   </header>
 
@@ -93,7 +214,7 @@ Terraform will perform the following actions:
 
 <section class="block" id="career">
   <header class="block-head">
-    <p class="kicker">02 · terraform apply --career</p>
+    <p class="kicker">04 · terraform apply --career</p>
     <h2>Career, as an apply log.</h2>
   </header>
 
@@ -123,7 +244,7 @@ Terraform will perform the following actions:
 
 <section class="block" id="numbers">
   <header class="block-head">
-    <p class="kicker">03 · metrics</p>
+    <p class="kicker">05 · metrics</p>
     <h2>A few numbers I'm proud of.</h2>
   </header>
   <div class="stats">
@@ -136,33 +257,9 @@ Terraform will perform the following actions:
   </div>
 </section>
 
-<section class="block" id="labs">
-  <header class="block-head">
-    <p class="kicker">04 · kubectl get labs</p>
-    <h2>Things I build when nobody asks.</h2>
-  </header>
-  <div class="cards three">
-    <article>
-      <h3>A PHP monolith, on Kubernetes</h3>
-      <p>Proof of concept: containerized a production Laravel API and frontend and packaged them as one Helm chart, with a migration Job, TLS ingress and a MariaDB volume, running on k3s.</p>
-      <p class="tech">helm · nginx · php-fpm ×2 · k3s</p>
-    </article>
-    <article>
-      <h3>GitOps from zero</h3>
-      <p>A local cluster bootstrapped entirely with Terraform: ingress, load balancer, ArgoCD syncing apps from git, and Istio on top.</p>
-      <p class="tech">terraform · k3d · argocd · metallb · istio</p>
-    </article>
-    <article>
-      <h3>.NET API, shipped properly</h3>
-      <p>A .NET API with its own Dockerfile, an Nginx front container and a Helm chart, going from <code>git push</code> to a running pod.</p>
-      <p class="tech">docker · helm · .net</p>
-    </article>
-  </div>
-</section>
-
 <section class="block" id="stories">
   <header class="block-head">
-    <p class="kicker">05 · postmortems</p>
+    <p class="kicker">06 · postmortems</p>
     <h2>War stories, soon on the blog.</h2>
   </header>
   <div class="cards">
@@ -190,7 +287,7 @@ Terraform will perform the following actions:
 
 <section class="block" id="offcall">
   <header class="block-head">
-    <p class="kicker">06 · off-call</p>
+    <p class="kicker">07 · off-call</p>
     <h2>When the pager is quiet.</h2>
   </header>
   <ul class="offcall">
