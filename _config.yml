@@ -1,0 +1,30 @@
+title: Sinan B. Öztürk
+tagline: DevOps Engineer · AWS · Terraform · Kubernetes
+description: >-
+  DevOps engineer in Warsaw running a multi-cloud estate across AWS EU, AWS China
+  and GCP Saudi Arabia. Notes on Terraform, AWS, Kubernetes and operations.
+url: https://sharpthunder.github.io
+baseurl: ""
+lang: en
+
+author:
+  name: Sinan B. Öztürk
+  location: Warsaw, Poland
+  github: SharpThunder
+  linkedin: https://www.linkedin.com/in/sinan-b-%C3%B6zt%C3%BCrk-589b1279/
+  # email: you@example.com   # uncomment to show an email link (it will be public)
+
+permalink: /blog/:year/:month/:title/
+markdown: kramdown
+kramdown:
+  input: GFM
+  syntax_highlighter: rouge
+
+plugins:
+  - jekyll-feed
+  - jekyll-seo-tag
+
+exclude:
+  - README.md
+  - Gemfile
+  - Gemfile.lock

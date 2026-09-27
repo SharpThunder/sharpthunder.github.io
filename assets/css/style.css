@@ -1,0 +1,80 @@
+:root {
+  --bg: #fbfbf9;
+  --fg: #1d1f21;
+  --muted: #6b6f76;
+  --accent: #0b6bcb;
+  --rule: #e4e4e0;
+  --code-bg: #f0f0ec;
+  color-scheme: light dark;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #15171a;
+    --fg: #e6e6e3;
+    --muted: #9a9ea6;
+    --accent: #6cb4ff;
+    --rule: #2a2d31;
+    --code-bg: #1f2226;
+  }
+}
+
+* { box-sizing: border-box; }
+
+body {
+  margin: 0 auto;
+  max-width: 44rem;
+  padding: 2rem 1.25rem 3rem;
+  background: var(--bg);
+  color: var(--fg);
+  font: 1.0625rem/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+
+.site-header {
+  display: flex;
+  flex-wrap: wrap;
+  gap: .5rem 1.5rem;
+  align-items: baseline;
+  justify-content: space-between;
+  padding-bottom: 1rem;
+  margin-bottom: 2rem;
+  border-bottom: 1px solid var(--rule);
+}
+.site-title { font-weight: 700; color: var(--fg); text-decoration: none; }
+.site-header nav { display: flex; gap: 1.25rem; }
+.site-header nav a { color: var(--muted); text-decoration: none; }
+.site-header nav a[aria-current="page"] { color: var(--fg); font-weight: 600; }
+
+h1 { font-size: 2rem; line-height: 1.2; margin: 0 0 1rem; }
+h2 { font-size: 1.25rem; margin: 2.25rem 0 .75rem; }
+ul { padding-left: 1.25rem; }
+li { margin: .35rem 0; }
+
+.muted, .meta { color: var(--muted); }
+.meta { margin-top: -.5rem; font-size: .95rem; }
+
+.post-list { list-style: none; padding: 0; }
+.post-list li { margin: 0 0 1.5rem; }
+.post-list time { display: block; color: var(--muted); font-size: .9rem; }
+.post-list a { font-size: 1.125rem; font-weight: 600; }
+.post-list p { margin: .25rem 0 0; color: var(--muted); }
+
+code { background: var(--code-bg); padding: .1em .35em; border-radius: 4px; font-size: .9em; }
+pre { background: var(--code-bg); padding: 1rem; border-radius: 6px; overflow-x: auto; line-height: 1.45; }
+pre code { background: none; padding: 0; }
+blockquote { margin: 1.5rem 0; padding-left: 1rem; border-left: 3px solid var(--rule); color: var(--muted); }
+img { max-width: 100%; }
+
+.back { margin-top: 3rem; }
+
+.site-footer {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  margin-top: 4rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--rule);
+  font-size: .95rem;
+}
+.site-footer a { color: var(--muted); }
