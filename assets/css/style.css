@@ -264,3 +264,141 @@ code, pre, .mono { font-family: var(--mono); }
 .terminal.wide .term-body { font-size: clamp(.66rem, 1.4vw, .8rem); }
 .sub { margin: 2.5rem 0 1rem; font-size: 1.15rem; }
 .sub code { font-size: .95em; background: var(--bg-2); padding: .1em .35em; border-radius: 4px; }
+
+/* ======================================================================
+   Cloud-coded palette: every element carries the color of the platform
+   it ran on. Brand hues for fills/borders, readable variants for text.
+   ====================================================================== */
+:root {
+  --aws: #FF9900;   --aws-t: #a85f00;
+  --azure: #0078D4; --azure-t: #0063b1;
+  --k8s: #326CE5;   --k8s-t: #2757c2;
+  --tf: #7B42BC;    --tf-t: #6a35a8;
+  --gcp: #4285F4;   --gcp-t: #1a64d6;
+  --gitlab: #FC6D26; --gitlab-t: #c4461a;
+  --github: #6e7681; --github-t: #3d444d;
+  --bamboo: #0052CC; --bamboo-t: #0052CC;
+  --onprem: #8b949e; --onprem-t: #57606a;
+  --red: #e5534b;   --red-t: #c2362b;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --aws-t: #ffb547; --azure-t: #4fa8ff; --k8s-t: #7fa4ff; --tf-t: #b48cf2; --gcp-t: #8ab4f8;
+    --gitlab-t: #ff9a66; --github-t: #c9d1d9; --bamboo-t: #6aa3ff; --onprem-t: #9aa3ad; --red-t: #ff7b72;
+  }
+}
+:root[data-theme="dark"] {
+  --aws-t: #ffb547; --azure-t: #4fa8ff; --k8s-t: #7fa4ff; --tf-t: #b48cf2; --gcp-t: #8ab4f8;
+  --gitlab-t: #ff9a66; --github-t: #c9d1d9; --bamboo-t: #6aa3ff; --onprem-t: #9aa3ad; --red-t: #ff7b72;
+}
+
+.t-aws    { --c: var(--aws);    --ct: var(--aws-t); }
+.t-azure  { --c: var(--azure);  --ct: var(--azure-t); }
+.t-k8s    { --c: var(--k8s);    --ct: var(--k8s-t); }
+.t-tf     { --c: var(--tf);     --ct: var(--tf-t); }
+.t-gcp    { --c: var(--gcp);    --ct: var(--gcp-t); }
+.t-gitlab { --c: var(--gitlab); --ct: var(--gitlab-t); }
+.t-github { --c: var(--github); --ct: var(--github-t); }
+.t-bamboo { --c: var(--bamboo); --ct: var(--bamboo-t); }
+.t-onprem { --c: var(--onprem); --ct: var(--onprem-t); }
+.t-red    { --c: var(--red);    --ct: var(--red-t); }
+
+/* rainbow stripe of every cloud under the header */
+.site-header { border-bottom: 0; }
+.site-header::after {
+  content: ""; position: absolute; left: 0; right: 0; bottom: 0; height: 3px;
+  background: linear-gradient(90deg, var(--k8s), var(--azure), var(--aws), var(--tf), #EA4335, #FBBC04, #34A853);
+}
+
+/* colored words in running text */
+.ink { color: var(--ct) !important; }
+
+/* chips */
+.chips { display: flex; flex-wrap: wrap; gap: .4rem; margin: .9rem 0 0 !important; }
+.chip {
+  display: inline-block; font: 600 .72rem/1 var(--mono); letter-spacing: .02em;
+  padding: .38rem .55rem; border-radius: 999px;
+  color: var(--ct);
+  background: color-mix(in srgb, var(--c) 13%, transparent);
+  border: 1px solid color-mix(in srgb, var(--c) 45%, transparent);
+}
+.badges .chip { font-size: .78rem; padding: .4rem .65rem; }
+.t-gcp.chip, .chip.t-gcp {
+  border-image: none;
+  background:
+    linear-gradient(color-mix(in srgb, var(--card) 88%, transparent), color-mix(in srgb, var(--card) 88%, transparent)) padding-box,
+    linear-gradient(90deg, #4285F4, #EA4335, #FBBC04, #34A853) border-box;
+  border: 1px solid transparent;
+}
+
+/* sections: colored kicker + bar */
+.block[class*="t-"] .kicker { color: var(--ct); }
+.block[class*="t-"] .block-head::before {
+  content: ""; display: block; width: 3rem; height: 4px; border-radius: 2px; margin-bottom: 1rem;
+  background: linear-gradient(90deg, var(--c), color-mix(in srgb, var(--c) 20%, transparent));
+}
+
+/* cards: cloud-colored left rail, gradient when two clouds */
+.cloud { position: relative; overflow: hidden; }
+.cards article.cloud, .offcall li.cloud { padding-left: 1.55rem; }
+.cloud::before {
+  content: ""; position: absolute; left: 0; top: 0; bottom: 0; width: 5px;
+  background: linear-gradient(180deg, var(--c), var(--c2, var(--c)));
+}
+.cards article.cloud:hover { border-color: color-mix(in srgb, var(--c) 60%, var(--rule)); box-shadow: 0 14px 30px -18px color-mix(in srgb, var(--c) 70%, transparent); }
+.cards article.cloud::after {
+  content: ""; position: absolute; right: -40px; top: -40px; width: 120px; height: 120px; border-radius: 50%;
+  background: radial-gradient(circle, color-mix(in srgb, var(--c2, var(--c)) 16%, transparent), transparent 70%);
+  pointer-events: none;
+}
+.story .sev { color: var(--ct) !important; }
+
+/* pipeline: azure frame, AWS-colored deploy stage */
+.pipeline.t-azure { border-top: 4px solid var(--azure); }
+.stages li.t-aws { border-color: var(--aws); box-shadow: 0 0 0 3px color-mix(in srgb, var(--aws) 22%, transparent); }
+.stages li:not(:last-child)::after { background: linear-gradient(90deg, var(--add), var(--azure)); }
+
+/* CI history: each tool in its own color */
+.history li[class*="t-"]::before { border-color: var(--c); background: var(--bg); }
+.history li[class*="t-"]:last-child::before { background: var(--c); }
+.history li[class*="t-"] span { color: var(--ct); }
+.history { border-top-width: 3px; border-image: linear-gradient(90deg, var(--bamboo), var(--gitlab), var(--github), var(--azure)) 1; }
+
+/* career log: dots and rail colored by the clouds of each job */
+.apply-log { border-left: 0; position: relative; }
+.apply-log::before {
+  content: ""; position: absolute; left: 0; top: .5rem; bottom: 1.5rem; width: 3px; border-radius: 2px;
+  background: linear-gradient(180deg, var(--onprem), var(--bamboo), var(--aws), var(--azure), var(--k8s), var(--tf), var(--aws));
+}
+.apply-log li[class*="t-"]::before { border-color: var(--c); left: -5px; }
+.apply-log li.current[class*="t-"]::before { background: var(--c); box-shadow: 0 0 0 6px color-mix(in srgb, var(--c) 25%, transparent); }
+.apply-log li[style*="--c2"]::before { border-color: var(--c); background: linear-gradient(135deg, var(--c) 50%, var(--c2) 50%); }
+
+/* stats: numbers in their cloud's color */
+.stats div[class*="t-"] b { color: var(--ct); }
+.stats div[class*="t-"] { border-top: 3px solid var(--c); }
+.stats b.grad, .stats b.gcp-grad { -webkit-background-clip: text; background-clip: text; color: transparent !important; }
+.stats b.grad { background-image: linear-gradient(90deg, var(--aws), var(--azure)); }
+.stats b.gcp-grad { background-image: linear-gradient(90deg, #4285F4, #EA4335, #FBBC04, #34A853); }
+.stats div.t-gcp { border-image: linear-gradient(90deg, #4285F4, #EA4335, #FBBC04, #34A853) 1; }
+
+/* map */
+.map .link.aws { stroke: var(--aws); }
+.map .link.home { stroke: var(--k8s); }
+.node.aws circle { fill: var(--aws); }
+.node.home circle { fill: var(--k8s); }
+.node.gcp circle { stroke: none; }
+.lg { border-top-color: var(--c, var(--accent)); border-top-style: dashed; }
+.lg.lg-grad { border-top: 0; height: 2px; background: repeating-linear-gradient(90deg, var(--aws) 0 5px, transparent 5px 8px, var(--gcp) 8px 13px, transparent 13px 16px); }
+
+/* terminal tokens in brand colors (terminal is always dark) */
+.v-aws { color: #FF9900; }
+.v-azure { color: #3aa0ff; }
+.v-k8s { color: #6d97ff; }
+.v-tf { color: #a67ff0; }
+.v-gcp { color: #8ab4f8; }
+.v-gitlab { color: #ff8a4c; }
+.v-github { color: #c9d1d9; }
+
+/* off-call GameDay card */
+.offcall li.cloud { position: relative; }
