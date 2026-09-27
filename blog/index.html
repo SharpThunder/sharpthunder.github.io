@@ -2,18 +2,28 @@
 layout: default
 title: Blog
 ---
-<h1>Blog</h1>
+<section class="page-head">
+  <p class="kicker">~/blog · tail -f</p>
+  <h1>Notes from production.</h1>
+  <p class="lede">Things I've actually run into: Terraform, AWS, Kubernetes, and the occasional outage.</p>
+</section>
 
 {% if site.posts.size == 0 %}
-<p class="muted">First post coming soon.</p>
+<div class="empty">
+<pre><code><span class="c-prompt">$</span> ls _posts/
+<span class="muted"># empty: the first post is being written</span></code></pre>
+</div>
 {% else %}
-<ul class="post-list">
+<ol class="post-list">
   {% for post in site.posts %}
   <li>
-    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%-d %b %Y" }}</time>
-    <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
-    {% if post.description %}<p>{{ post.description }}</p>{% endif %}
+    <time datetime="{{ post.date | date_to_xmlschema }}">{{ post.date | date: "%Y-%m-%d" }}</time>
+    <div>
+      <a href="{{ post.url | relative_url }}">{{ post.title }}</a>
+      {% if post.description %}<p>{{ post.description }}</p>{% endif %}
+      {% if post.tags.size > 0 %}<p class="tags">{% for t in post.tags %}<span>#{{ t }}</span>{% endfor %}</p>{% endif %}
+    </div>
   </li>
   {% endfor %}
-</ul>
+</ol>
 {% endif %}

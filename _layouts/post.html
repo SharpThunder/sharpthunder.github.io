@@ -3,12 +3,12 @@ layout: default
 ---
 <article class="post">
   <header>
+    <p class="kicker"><time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%Y-%m-%d" }}</time>{% if page.tags.size > 0 %} · {% for t in page.tags %}#{{ t }} {% endfor %}{% endif %}</p>
     <h1>{{ page.title }}</h1>
-    <p class="meta">
-      <time datetime="{{ page.date | date_to_xmlschema }}">{{ page.date | date: "%-d %B %Y" }}</time>
-      {% if page.tags.size > 0 %} · {{ page.tags | join: ", " }}{% endif %}
-    </p>
+    {% if page.description %}<p class="lede">{{ page.description }}</p>{% endif %}
   </header>
-  {{ content }}
-  <p class="back"><a href="{{ '/blog/' | relative_url }}">← All posts</a></p>
+  <div class="prose">
+    {{ content }}
+  </div>
+  <p class="back"><a href="{{ '/blog/' | relative_url }}">← cd ../blog</a></p>
 </article>

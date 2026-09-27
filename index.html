@@ -1,0 +1,207 @@
+---
+layout: default
+title: Sinan B. Öztürk. DevOps engineer
+---
+
+<section class="hero">
+  <div class="hero-copy">
+    <p class="eyebrow">DevOps engineer · Warsaw</p>
+    <h1>I make infrastructure<br><span class="hl">boring</span> in the best way.</h1>
+    <p class="lede">
+      I'm Sinan. I run the DevOps function at Ulula, an EcoVadis company: one estate across
+      <strong>AWS Europe</strong>, <strong>AWS China</strong> and <strong>GCP in Saudi Arabia</strong>,
+      all in Terraform. Before that I built Kubernetes platforms from scratch and racked
+      servers for an airline.
+    </p>
+    <p class="badges">
+      <span>AWS Solutions Architect</span><span>CKA</span><span>Terraform Associate</span>
+      <span class="ok">work-authorized in Poland, no sponsorship needed</span>
+    </p>
+  </div>
+
+  <div class="terminal" aria-label="terraform plan output describing Sinan">
+    <div class="term-bar"><i></i><i></i><i></i><span>~/sinan: zsh</span></div>
+<pre class="term-body" data-typed><code><span class="c-prompt">$</span> terraform plan -target=module.sinan
+
+Terraform will perform the following actions:
+
+  <span class="c-add"># module.sinan.aws_engineer.this</span> will be created
+  <span class="c-add">+</span> resource "devops_engineer" "sinan" {
+      <span class="c-add">+</span> location           = "Warsaw, PL"
+      <span class="c-add">+</span> experience_years   = 6
+      <span class="c-add">+</span> clouds             = ["aws", "aws-cn", "gcp", "azure"]
+      <span class="c-add">+</span> iac                = "terraform"
+      <span class="c-add">+</span> orchestration      = "kubernetes"
+      <span class="c-add">+</span> needs_sponsorship  = <span class="c-false">false</span>
+      <span class="c-add">+</span> on_call_mood       = "calm"
+      <span class="c-add">+</span> hobbies            = (known after apply)
+    }
+
+<span class="c-strong">Plan:</span> 1 to add, <span class="c-strong">0 to change, 0 to destroy.</span></code></pre>
+  </div>
+</section>
+
+<section class="block" id="estate">
+  <header class="block-head">
+    <p class="kicker">01 · the estate</p>
+    <h2>Three clouds, two AWS partitions, one Terraform codebase.</h2>
+  </header>
+
+  <figure class="map">
+    <svg viewBox="0 28 120 42" role="img" aria-labelledby="map-title map-desc">
+      <title id="map-title">Regions I operate</title>
+      <desc id="map-desc">Warsaw home base, AWS Frankfurt, AWS China Ningxia, and GCP Dammam, connected by VPN links. A dotted line shows the move from Istanbul to Warsaw.</desc>
+      <defs>
+        <pattern id="dots" width="2" height="2" patternUnits="userSpaceOnUse">
+          <circle cx="1" cy="1" r=".18" class="grid-dot"/>
+        </pattern>
+      </defs>
+      <rect x="0" y="28" width="120" height="42" fill="url(#dots)"/>
+
+      <path class="link" d="M8.7 39.9 Q57 22 105.2 52.5"/>
+      <path class="link" d="M8.7 39.9 Q34 44 50.1 63.6"/>
+      <path class="link home" d="M21 37.8 Q15 36 8.7 39.9"/>
+      <path class="journey" d="M29 49 Q27 42 21 37.8"/>
+
+      <g class="node home"><circle cx="21" cy="37.8" r="1.1"/><text x="22.6" y="36.4">Warsaw · home</text></g>
+      <g class="node"><circle cx="8.7" cy="39.9" r="1.1"/><text x="1" y="43.6">AWS Frankfurt</text></g>
+      <g class="node"><circle cx="105.2" cy="52.5" r="1.1"/><text x="92" y="56.6">AWS China · Ningxia</text></g>
+      <g class="node"><circle cx="50.1" cy="63.6" r="1.1"/><text x="52" y="64.6">GCP · Dammam</text></g>
+      <g class="node origin"><circle cx="29" cy="49" r=".8"/><text x="30.4" y="50.4">Istanbul · where it started</text></g>
+    </svg>
+    <figcaption>
+      <span><i class="lg link-lg"></i> site-to-site VPN</span>
+      <span><i class="lg journey-lg"></i> my own migration, 2023</span>
+    </figcaption>
+  </figure>
+
+  <div class="cards three">
+    <article>
+      <h3>Terraform both AWS partitions</h3>
+      <p>One versioned module library that works in commercial AWS <em>and</em> China, where ARNs, service principals and endpoints are all different.</p>
+    </article>
+    <article>
+      <h3>Import without fear</h3>
+      <p>Brought a live production estate under Terraform, 70 tasks, and not a single resource destroyed along the way.</p>
+    </article>
+    <article>
+      <h3>No keys lying around</h3>
+      <p>SSO for humans, OIDC for pipelines, SSM instead of SSH. Static credentials are a smell, not a strategy.</p>
+    </article>
+  </div>
+</section>
+
+<section class="block" id="career">
+  <header class="block-head">
+    <p class="kicker">02 · terraform apply --career</p>
+    <h2>Career, as an apply log.</h2>
+  </header>
+
+  <ol class="apply-log">
+    <li>
+      <p class="log-line"><span class="c-add">data.origin</span>: Read complete <span class="muted">[age 8 · Istanbul]</span></p>
+      <p>Computer magazines, then Linux. Linux Summer Camp in 2014 was where "sysadmin" stopped being a word and became the plan.</p>
+    </li>
+    <li>
+      <p class="log-line"><span class="c-add">module.gozen_holding</span>: Creation complete after 2y4m <span class="muted">[2018–2020 · Istanbul · aviation]</span></p>
+      <p>Intern → part-time → DevOps engineer at the group behind Freebird Airlines. Racked Supermicro JBODs for a 72-disk GlusterFS cluster, migrated VMware to OpenNebula, shipped iOS builds to TestFlight with Fastlane, ran Zabbix across 300+ servers, and started the move from VMs to Kubernetes on Rancher.</p>
+    </li>
+    <li>
+      <p class="log-line"><span class="c-add">module.powerdev</span>: Creation complete after 2y6m <span class="muted">[2021–2023 · remote · renewables]</span></p>
+      <p>The only infrastructure engineer, running 10+ Kubernetes clusters. Built EKS from scratch on startup credits, ran it on spot instances, and scaled a battery-optimization solver to 300 cores. Ran AWS Lambda code unmodified on Knative by reimplementing the Lambda Runtime API. When the credits ran out, moved everything, including a 10 TB Postgres, from AWS to Azure. Sent a fix upstream to eksctl along the way.</p>
+    </li>
+    <li>
+      <p class="log-line"><span class="c-mod">module.relocation</span>: Modifications complete after 1y4m <span class="muted">[2023–2025 · Istanbul → Warsaw]</span></p>
+      <p>New country, new home. Earned CKA and Terraform Associate, kept my hands dirty in labs.</p>
+    </li>
+    <li class="current">
+      <p class="log-line"><span class="c-add">module.ulula</span>: Still creating... <span class="muted">[2025–now · Warsaw · EcoVadis]</span><span class="cursor" aria-hidden="true"></span></p>
+      <p>Owning DevOps for a multi-cloud SaaS. Terraform everywhere, zero-downtime Azure DevOps pipelines, cross-cloud VPNs to launch in Saudi Arabia, SSO + VPN + SIEM for security, and a PHP 5.6 → 8.3 rebuild moved onto RDS.</p>
+    </li>
+  </ol>
+</section>
+
+<section class="block" id="numbers">
+  <header class="block-head">
+    <p class="kicker">03 · metrics</p>
+    <h2>A few numbers I'm proud of.</h2>
+  </header>
+  <div class="stats">
+    <div><b>0</b><span>resources destroyed while importing a live AWS estate into Terraform</span></div>
+    <div><b>&lt;1s</b><span>deploy downtime, down from manual release windows</span></div>
+    <div><b>300</b><span>cores for a battery-optimization solver on Kubernetes</span></div>
+    <div><b>10 TB</b><span>Postgres moved between clouds with minimal downtime</span></div>
+    <div><b>345→61</b><span>audit rules on the fleet, without losing coverage</span></div>
+    <div><b>3</b><span>clouds in production: AWS, AWS China, GCP</span></div>
+  </div>
+</section>
+
+<section class="block" id="labs">
+  <header class="block-head">
+    <p class="kicker">04 · kubectl get labs</p>
+    <h2>Things I build when nobody asks.</h2>
+  </header>
+  <div class="cards three">
+    <article>
+      <h3>A PHP monolith, on Kubernetes</h3>
+      <p>Proof of concept: containerized a production Laravel API and frontend and packaged them as one Helm chart, with a migration Job, TLS ingress and a MariaDB volume, running on k3s.</p>
+      <p class="tech">helm · nginx · php-fpm ×2 · k3s</p>
+    </article>
+    <article>
+      <h3>GitOps from zero</h3>
+      <p>A local cluster bootstrapped entirely with Terraform: ingress, load balancer, ArgoCD syncing apps from git, and Istio on top.</p>
+      <p class="tech">terraform · k3d · argocd · metallb · istio</p>
+    </article>
+    <article>
+      <h3>.NET API, shipped properly</h3>
+      <p>A .NET API with its own Dockerfile, an Nginx front container and a Helm chart, going from <code>git push</code> to a running pod.</p>
+      <p class="tech">docker · helm · .net</p>
+    </article>
+  </div>
+</section>
+
+<section class="block" id="stories">
+  <header class="block-head">
+    <p class="kicker">05 · postmortems</p>
+    <h2>War stories, soon on the blog.</h2>
+  </header>
+  <div class="cards">
+    <article class="story">
+      <p class="sev">SEV-1</p>
+      <h3>The security scanner that took production down</h3>
+      <p>A vulnerability scan saturated PHP-FPM. How we found it, split the pools, and made sure the next scan was a non-event.</p>
+      <span class="soon">coming soon</span>
+    </article>
+    <article class="story">
+      <p class="sev">MIGRATION</p>
+      <h3>The credits ran out: AWS → Azure with 10 TB on board</h3>
+      <p>What moving a startup's whole platform between clouds looks like when you're the only infra person.</p>
+      <span class="soon">coming soon</span>
+    </article>
+    <article class="story">
+      <p class="sev">IaC</p>
+      <h3>Importing a live AWS estate with zero destroys</h3>
+      <p>Import order, plan discipline, and the bucket that was in the wrong region all along.</p>
+      <span class="soon">coming soon</span>
+    </article>
+  </div>
+  <p class="more"><a href="{{ '/blog/' | relative_url }}">Read the blog →</a></p>
+</section>
+
+<section class="block" id="offcall">
+  <header class="block-head">
+    <p class="kicker">06 · off-call</p>
+    <h2>When the pager is quiet.</h2>
+  </header>
+  <ul class="offcall">
+    <li><span class="ico" aria-hidden="true">🎮</span><b>240+ games finished</b><span class="txt">Logged, one by one, since 2015. Deus Ex and Dishonored set the bar.</span></li>
+    <li><span class="ico" aria-hidden="true">🚲</span><b>Bicycles</b><span class="txt">The only kind of redundancy I don't have to monitor.</span></li>
+    <li><span class="ico" aria-hidden="true">🧭</span><b>Travel</b><span class="txt">Istanbul → Warsaw was my biggest migration so far. No rollback plan.</span></li>
+    <li><span class="ico" aria-hidden="true">🖥️</span><b>Homelab</b><span class="txt">Where things are allowed to break.</span></li>
+    <li><span class="ico" aria-hidden="true">📚</span><b>Books</b><span class="txt">Oğuz Atay's <em>Tutunamayanlar</em>, the Turkish novel I keep coming back to.</span></li>
+  </ul>
+  <div class="cta">
+    <p>Hiring for DevOps, Platform or Cloud? I'd love to talk.</p>
+    <a class="btn" href="{{ site.author.linkedin }}">Say hi on LinkedIn</a>
+  </div>
+</section>
