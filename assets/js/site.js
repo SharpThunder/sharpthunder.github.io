@@ -220,7 +220,7 @@
     },
     'kubectl get pods': function () {
       return '<b>NAME              STATUS       AGE</b>\n' +
-        'ulula-ecovadis    <span class="c-add">Running</span>      1y7m\n' +
+        'ulula            <span class="c-add">Running</span>      1y7m\n' +
         'career-break      Completed    1y4m\n' +
         'powerdev          Completed    2y7m\n' +
         'gozen-holding     Completed    2y5m';
