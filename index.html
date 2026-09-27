@@ -158,22 +158,28 @@ Terraform will perform the following actions:
     </article>
   </div>
 
-  <h3 class="sub">Now: <code>kubectl get labs</code></h3>
-  <div class="cards three">
+  <h3 class="sub">Now: side projects &amp; tools</h3>
+  <div class="cards">
     <article class="cloud t-k8s">
       <h3>A PHP monolith, on Kubernetes</h3>
       <p>Proof of concept: containerized a production Laravel API and frontend and packaged them as one Helm chart, with a migration Job, TLS ingress and a MariaDB volume, running on k3s.</p>
       <p class="chips"><span class="chip t-k8s">helm</span><span class="chip t-k8s">k3s</span><span class="chip t-onprem">nginx · php-fpm</span></p>
     </article>
-    <article class="cloud t-tf" style="--c2: var(--k8s)">
-      <h3>GitOps from zero</h3>
-      <p>A cluster bootstrapped entirely with Terraform: ingress, MetalLB, ArgoCD syncing apps from git, and Istio on top.</p>
-      <p class="chips"><span class="chip t-tf">terraform</span><span class="chip t-k8s">argocd</span><span class="chip t-k8s">istio</span></p>
+    <article class="cloud t-tf" style="--c2: var(--aws)">
+      <h3>An AI assistant for infra ops</h3>
+      <p>A Claude Code plugin for my team's estate: specialist agents, read-only commands for cost sweeps, SSL checks and Terraform plan reviews, and a safety hook that only auto-approves read-only operations.</p>
+      <p class="chips"><span class="chip t-tf">claude code</span><span class="chip t-aws">aws</span><span class="chip t-azure">azure devops</span></p>
     </article>
-    <article class="cloud t-k8s" style="--c2: var(--azure)">
-      <h3>.NET API, shipped properly</h3>
-      <p>A .NET API with its own Dockerfile, an Nginx front container and a Helm chart, going from <code>git push</code> to a running pod.</p>
-      <p class="chips"><span class="chip t-onprem">docker</span><span class="chip t-k8s">helm</span><span class="chip t-azure">.net</span></p>
+    <article class="cloud t-onprem">
+      <h3>Small tools that save time</h3>
+      <p>Scripts I actually use: an SSL and host-connectivity checker, an uploader that turns env files into Azure DevOps variable groups, and a cron-driven file sync between regions.</p>
+      <p class="chips"><span class="chip t-onprem">python</span><span class="chip t-onprem">bash</span><span class="chip t-azure">azure devops api</span></p>
+    </article>
+    <article class="cloud t-k8s" style="--c2: var(--tf)">
+      <h3>Homelab GitOps cluster</h3>
+      <p>Slowly building a home cluster the way I'd run one at work: k3s, Terraform, ArgoCD and Prometheus. Notes will land on the blog as it grows.</p>
+      <p class="chips"><span class="chip t-k8s">k3s</span><span class="chip t-k8s">argocd</span><span class="chip t-tf">terraform</span></p>
+      <span class="soon">in progress</span>
     </article>
   </div>
 </section>
